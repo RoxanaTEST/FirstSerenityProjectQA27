@@ -18,6 +18,9 @@ public class LoginPage extends PageObject {
     @FindBy(css = ".error-msg span")
     private WebElementFacade errorMessageElement;
 
+    @FindBy(css = ".validation-advice")
+    private WebElementFacade mandatoryfieldserrortext;
+
     public void setEmailField(String value) {
         typeInto(emailField, value);
     }
@@ -30,8 +33,11 @@ public class LoginPage extends PageObject {
         clickOn(loginButton);
     }
 
-    public String getErrorMessage(){
+    public String getErrorMessage() {
         return errorMessageElement.getText();
     }
 
+    public String getMandatoryFieldsErrorMessage() {
+        return mandatoryfieldserrortext.getText();
+    }
 }

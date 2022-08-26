@@ -40,6 +40,10 @@ public class LoginSteps extends BaseSteps {
     public void verifyUserNotLoggedIn(){
         Assert.assertEquals("Invalid login or password.",loginPage.getErrorMessage());
     }
+    @Step
+    public void verifyMandatoryFieldserrorwhilelogginginwithInvalidCredentials(){
+        Assert.assertEquals("This is a required field.",loginPage.getMandatoryFieldsErrorMessage());
+    }
 
     @Step
     public void doLogin(String email, String pass){
