@@ -1,5 +1,6 @@
 package org.fasttrack.features;
 
+import org.fasttrack.utils.Constants;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -24,12 +25,12 @@ public class RegisterTest extends BaseTest {
     public void registeredAlreadyemailtest() {
 
         registerSteps.navigateToRegisterPage();
-        registerSteps.setRegisterFirstname(firstName);
-        registerSteps.setRegisterMiddlename(middleName);
-        registerSteps.setRegisterLastname(lastName);
-        registerSteps.setRegisterEmail(userEmail);
-        registerSteps.setRegisterPassword(userPass);
-        registerSteps.setRegisterConfirmationPassword(userPass);
+        registerSteps.setRegisterFirstname(Constants.firstName);
+        registerSteps.setRegisterMiddlename(Constants.middleName);
+        registerSteps.setRegisterLastname(Constants.lastName);
+        registerSteps.setRegisterEmail(Constants.userEmail);
+        registerSteps.setRegisterPassword(Constants.userPass);
+        registerSteps.setRegisterConfirmationPassword(Constants.userPass);
         registerSteps.clickRegister();
 
         registerSteps.verifyAlreadyRegisterederrorMsg();
@@ -53,11 +54,11 @@ public class RegisterTest extends BaseTest {
     @Test
     public void passwordsNotmatchRegisterTest(){
         registerSteps.navigateToRegisterPage();
-        registerSteps.setRegisterFirstname(firstName);
-        registerSteps.setRegisterMiddlename(middleName);
-        registerSteps.setRegisterLastname(lastName);
-        registerSteps.setRegisterEmail(userEmail);
-        registerSteps.setRegisterPassword(userPass);
+        registerSteps.setRegisterFirstname(Constants.firstName);
+        registerSteps.setRegisterMiddlename(Constants.middleName);
+        registerSteps.setRegisterLastname(Constants.lastName);
+        registerSteps.setRegisterEmail(Constants.userEmail);
+        registerSteps.setRegisterPassword(Constants.userPass);
         registerSteps.setRegisterConfirmationPassword("gdfhjdjjd");
         registerSteps.clickRegister();
 

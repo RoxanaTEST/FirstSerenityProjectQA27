@@ -8,16 +8,15 @@ public class CartSteps extends BaseSteps{
 
     @Step
     public void addProductToCart() {
-        cartPage.clickADDtoCartButton();
+        productPage.clickADDtoCartButton();
         }
 
-    @Step
-    public void getSuccesMsgProductaddedtoCart(String productName){
-        Assert.assertEquals(productName.toLowerCase() + "was added to your shopping cart.",cartPage.getProductAddedSuccesfullytoCartText().toLowerCase());
+        @Step
+        public void getSuccesMsgProductaddedtoCart(String productName){
+            Assert.assertEquals((productName + " was added to your shopping cart.").toLowerCase(), cartPage.getProductAddedSuccesfullytoCartText().toLowerCase());
+        }
 
-     //   Assert.assertEquals(productName.toLowerCase() + " was added to your shopping cart."
-               // , cartPage.getSuccessMessageSpan().toLowerCase());
-}
+
 @Step
     public void clickCheckoutButton(){
         cartPage.clickCheckoutButton();
@@ -38,5 +37,19 @@ public class CartSteps extends BaseSteps{
         setCartProductQty(qty);
         clickUpdateCartQuantityButton();
     }
+    @Step
+    public void checkSubtotalPrice(){
+        Assert.assertTrue(cartPage.checkIfSubtotalMatches());
     }
+    @Step
+    public void checkTotalPrice(){
+        Assert.assertTrue(cartPage.checkIfTotalPriceMatches());
+    }
+
+    @Step
+    public void checkIfTotalPriceiscorrect(){
+        Assert.assertTrue(cartPage.checkIfTotalPriceMatches2());
+    }
+}
+
 

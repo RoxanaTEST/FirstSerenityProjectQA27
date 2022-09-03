@@ -23,4 +23,17 @@ public class SearchSteps extends BaseSteps{
         findProductWithNameInListAndOpen(productName);
     }
 
+    @Step
+    public void findProductInList(String productname){
+        Assert.assertTrue(searchResultsPage.findProductInGrid(productname));
+    }
+    @Step
+    public void sortProductListByPrice(){
+        searchResultsPage.selectSortbyPriceOption();
+    }
+
+
+    @Step
+    public void checkifFirstpriceisSmallerthanLast(){Assert.assertTrue(searchResultsPage.checktheSmallerPriceisDisplayedfirst());}
+
 }
