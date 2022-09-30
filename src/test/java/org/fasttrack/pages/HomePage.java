@@ -8,44 +8,106 @@ import net.thucydides.core.annotations.DefaultUrl;
 import org.jsoup.Connection;
 import org.openqa.selenium.WebElement;
 
-@DefaultUrl("http://testfasttrackit.info/selenium-test/")
+import java.util.List;
+
+@DefaultUrl("http://qa2.fasttrackit.org:8008/")
 public class HomePage extends BasePage {
+    @FindBy(css=".site-title a")
+    private WebElementFacade sitetitlelink;
 
-    @FindBy(css = ".skip-account .label")
-    private WebElementFacade accountLink;
+    @FindBy(css = "#menu-item-63 a")
+    private WebElementFacade homelink;
 
-    @FindBy(css = "a[title='Log In']")
-    private WebElementFacade loginLink;
+    @FindBy(css = "#menu-item-64 a ")
+    private WebElementFacade myaccountLink;
 
-    @FindBy (css = "[title='Register']" )
-    private WebElementFacade registerLink;
+    @FindBy(css = "#menu-item-66 a")
+    private WebElementFacade shoplink;
 
-    @FindBy( id = "search")
+    @FindBy(css = "#menu-item-65 a")
+    private WebElementFacade checkoutlink;
+
+    @FindBy(css = " div.search-box > i")
+    private WebElementFacade searchIcon;
+
+    @FindBy(css=".icon-search:last-child")
+    private WebElementFacade searchicon2;
+
+    @FindBy(css="[name='s']")
     private WebElementFacade searchField;
 
-    @FindBy(css = ".search-button")
-    private WebElementFacade searchButton;
+    @FindBy(className = "cart-control")
+    private WebElementFacade carticon;
+
+    @FindBy(css = ".add-cart")
+    private List<WebElementFacade> addtocartReadmoreButtonsList;
+
+    @FindBy(css="h3.widget-title ")
+    private List<WebElementFacade> widgetlinksList;
+
 
     public void clickAccountLink() {
-        clickOn(accountLink);
-    }
-
-    public void clickLoginLink() {
-        clickOn(loginLink);
-    }
-
-    public void clickRegisterLink() {
-        clickOn(registerLink);
+        clickOn(myaccountLink);
     }
 
 
+    public boolean isSiteTitleLinkclickable() {
+        sitetitlelink.isClickable();
+        return true;
+
+    }
+    public boolean isHomelinkclickable() {
+        homelink.isClickable();
+        return true;
+    }
+
+    public boolean isMyAccountlinkclickable() {
+        myaccountLink.isClickable();
+        return true;
+    }
+
+    public boolean isShoplinkclickable() {
+        shoplink.isClickable();
+        return true;
+    }
+
+    public boolean isCheckoutlinkclickable() {
+        checkoutlink.isClickable();
+        return true;
+    }
+
+    public boolean isSearchIconclickable() {
+        searchIcon.isClickable();
+        return true;
+    }
+
+    public boolean isCartIconclickable() {
+        carticon.isClickable();
+        return true;
+
+    }
+
+    public boolean areAddtoCartandReadmoreButtonsClickable() {
+        for (WebElementFacade element : addtocartReadmoreButtonsList) {
+            if (element.isClickable()) ;
+            return true;
+        }
+        return false;
+    }
+    public boolean areWidgetLinksClickable() {
+        for (WebElementFacade element1 : widgetlinksList) {
+            if (element1.isClickable()) ;
+            return true;
+        }
+        return false;
+    }
+   public void clickSearchButton(){
+       clickOn(searchIcon);
+   }
 
     public void setSearchField(String value){
         typeInto(searchField,value);
+        searchicon2.click();
     }
 
-
-    public void clickSearchButton(){
-        clickOn(searchButton);
-    }
 }

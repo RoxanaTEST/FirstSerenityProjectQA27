@@ -13,43 +13,54 @@ public class LoginSteps extends BaseSteps {
     @Step
     public void navigateToLoginPage() {
         homePage.clickAccountLink();
-        homePage.clickLoginLink();
+
     }
 
     @Step
-    public void setUserEmail(String email) {
-        loginPage.setEmailField(email);
+    public void setLoginEmail(String loginEmail) {
+        homeAccountPage.setLoginEmailField(loginEmail);
     }
 
     @Step
-    public void setPassword(String password) {
-        loginPage.setPasswordField(password);
+    public void setLoginPassword(String loginPassword) {
+        homeAccountPage.setLoginPasswordField(loginPassword);
     }
 
     @Step
     public void clickLogin() {
-        loginPage.clickLoginButton();
+        homeAccountPage.clickLoginLink();
     }
 
     @Step
-    public void verifyUserIsLoggedIn(String userName) {
-        Assert.assertEquals("Hello, " + userName + "!", accountPage.getWelcomeText());
+    public void verifyErrorforlogingInwithAnInvalidpassword(String useremail) {
+        Assert.assertEquals("ERROR: The password you entered for the email address " + useremail + " is incorrect. Lost your password?", homeAccountPage.getInvaliPasswordLoginError());
     }
 
     @Step
-    public void verifyUserNotLoggedIn(){
-        Assert.assertEquals("Invalid login or password.",loginPage.getErrorMessage());
-    }
-    @Step
-    public void verifyMandatoryFieldserrorwhilelogginginwithInvalidCredentials(){
-        Assert.assertEquals("This is a required field.",loginPage.getMandatoryFieldsErrorMessage());
+    public void verifyErrorforlogingInwithAnInvalidEmail() {
+        Assert.assertEquals("ERROR: Invalid email address. Lost your password?", homeAccountPage.getInvalidEmailLoginError());
     }
 
     @Step
-    public void doLogin(String email, String pass){
+    public void verifyMandatoryFieldserrorwhilelogginginwithInvalidUsername() {
+        Assert.assertEquals("Error: Username is required.", homeAccountPage.getInvalidUsernameLoginError());
+    }
+
+    @Step
+    public void verifyMandatoryFieldserrorwhilelogginginwithInvalidPassword() {
+        Assert.assertEquals("ERROR: The password field is empty.", homeAccountPage.getInvalidPasswordLoginError());
+    }
+
+    @Step
+    public void verifyMandatoryFieldserrorwhilelogginginwithoutcredentials() {
+        Assert.assertEquals("Error: Username is required.", homeAccountPage.getInvalidUsernameLoginError());
+    }
+
+    @Step
+    public void doLogin(String email, String pass) {
         navigateToLoginPage();
-        setUserEmail(email);
-        setPassword(pass);
+        setLoginEmail(email);
+        setLoginPassword(pass);
         clickLogin();
     }
 }

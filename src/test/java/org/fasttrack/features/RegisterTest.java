@@ -7,69 +7,52 @@ import org.junit.Test;
 public class RegisterTest extends BaseTest {
 
     @Test
-    public void registerwithValidCredentialsTest() {
+    public void registeredAlreadywithValidCredentialsTest() {
         registerSteps.navigateToRegisterPage();
-        registerSteps.setRegisterFirstname("ANA");
-        registerSteps.setRegisterMiddlename("MARIA");
-        registerSteps.setRegisterLastname("POPA");
-        registerSteps.setRegisterEmail("anamaria.po@gmail.com");
-        registerSteps.setRegisterPassword("1234567");
-        registerSteps.setRegisterConfirmationPassword("1234567");
-        registerSteps.clickRegister();
-        registerSteps.verifyRegistrationSuccessfullywelcomeMsg();
-
-
-    }
-
-    @Test
-    public void registeredAlreadyemailtest() {
-
-        registerSteps.navigateToRegisterPage();
-        registerSteps.setRegisterFirstname(Constants.firstName);
-        registerSteps.setRegisterMiddlename(Constants.middleName);
-        registerSteps.setRegisterLastname(Constants.lastName);
         registerSteps.setRegisterEmail(Constants.userEmail);
         registerSteps.setRegisterPassword(Constants.userPass);
-        registerSteps.setRegisterConfirmationPassword(Constants.userPass);
         registerSteps.clickRegister();
-
         registerSteps.verifyAlreadyRegisterederrorMsg();
 
     }
 
     @Test
-    public void invalidcredentialsRegistertest() {
+    public void registerwithValidCredentialsTest() {
         registerSteps.navigateToRegisterPage();
-        registerSteps.setRegisterFirstname("skdkjjd");
-        registerSteps.setRegisterMiddlename("hjdjdj");
-        registerSteps.setRegisterLastname("hdjdj");
-        registerSteps.setRegisterEmail("jdkdlld@sks.com");
-        registerSteps.setRegisterPassword("ghdshdd");
-        registerSteps.setRegisterConfirmationPassword("ghdshdd");
+        registerSteps.setRegisterEmail("roxanatestare5@gmail.com");
+        registerSteps.setRegisterPassword("Testareplatforma1!");
         registerSteps.clickRegister();
+        registerSteps.verifyRegistrationSuccessfullywelcomeMsg("roxanatestare5");
 
-        registerSteps.verifyRegistrationSuccessfullywelcomeMsg();
+    }
 
+    @Test
+    public void registerwithInValidCredentialsTest() {
+        registerSteps.navigateToRegisterPage();
+        registerSteps.setRegisterEmail("bdsjdkjjsdjdjd@asta.com");
+        registerSteps.setRegisterPassword("kjdjakdkj!");
+        registerSteps.clickRegister();
+        registerSteps.verifyRegistrationSuccessfullywelcomeMsgNOTDISPALYED("bdsjdkjjsdjdjd");
+        //   registerSteps.verifyRegistrationSuccessfullywelcomeMsg("bdsjdkjdd");
+    }
+
+    @Test
+    public void registerwithEmptyMandatoryFieldsTest() {
+        registerSteps.navigateToRegisterPage();
+        registerSteps.setRegisterEmail("");
+        registerSteps.setRegisterPassword("");
+        registerSteps.clickRegister();
+        registerSteps.verifyInvalidemailderrorMsg();
     }
     @Test
-    public void passwordsNotmatchRegisterTest(){
+    public void registerwithInvalidEmailAddressTest() {
         registerSteps.navigateToRegisterPage();
-        registerSteps.setRegisterFirstname(Constants.firstName);
-        registerSteps.setRegisterMiddlename(Constants.middleName);
-        registerSteps.setRegisterLastname(Constants.lastName);
-        registerSteps.setRegisterEmail(Constants.userEmail);
-        registerSteps.setRegisterPassword(Constants.userPass);
-        registerSteps.setRegisterConfirmationPassword("gdfhjdjjd");
+        registerSteps.setRegisterEmail("roxanatestaregmailcom");
+        registerSteps.setRegisterPassword("hsjsjsjhjskjxjs");
         registerSteps.clickRegister();
-
-        registerSteps.verifyRegisterNotmatchingpasswordsError();
-
+        registerSteps.verifyRegisterTextDisplayedwhenRegisteringwithaninvalidFormailemail();
 
 
 
-
-
-
-
-    }
+}
 }

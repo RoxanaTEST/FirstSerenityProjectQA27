@@ -6,44 +6,73 @@ import org.junit.Test;
 
 public class LoginTest extends BaseTest {
 
-
     @Test
-    public void loginWithValidCredentialsTest() {
+    public void loginwithvalidcredentialsTest() {
         loginSteps.navigateToLoginPage();
-        loginSteps.setUserEmail(Constants.userEmail);
-        loginSteps.setPassword(Constants.userPass);
+        loginSteps.setLoginEmail(Constants.userEmail);
+        loginSteps.setLoginPassword(Constants.userPass);
         loginSteps.clickLogin();
-        loginSteps.verifyUserIsLoggedIn(Constants.userName);
+        registerSteps.verifyRegistrationSuccessfullywelcomeMsg("roxanatestare");
+
+
+
+    }
+    @Test
+    public void loginwithInvalidcredentialsTest() {
+        loginSteps.navigateToLoginPage();
+        loginSteps.setLoginEmail("hjsfdj@gmail.com");
+        loginSteps.setLoginPassword("000000000000000000000000000000000000000000000000");
+        loginSteps.clickLogin();
+        loginSteps.verifyErrorforlogingInwithAnInvalidEmail();
+
     }
 
 
-    @Test
+        @Test
     public void loginWithInvalidPasswordTest() {
         loginSteps.navigateToLoginPage();
-        loginSteps.setUserEmail(Constants.userEmail);
-        loginSteps.setPassword("12345as");
+        loginSteps.setLoginEmail(Constants.userEmail);
+        loginSteps.setLoginPassword("12345as");
         loginSteps.clickLogin();
-        loginSteps.verifyUserNotLoggedIn();
+        loginSteps.verifyErrorforlogingInwithAnInvalidpassword(Constants.userEmail);
+
+
     }
 
     @Test
-    public void invalidLoginTest() {
+    public void invalidEmailLoginTest() {
         loginSteps.navigateToLoginPage();
-        loginSteps.setUserEmail("jhjj@h3.com");
-        loginSteps.setPassword("HFHFJJFKF22");
+        loginSteps.setLoginEmail("jhjj@h3.com");
+        loginSteps.setLoginPassword("HFHFJJFKF22");
         loginSteps.clickLogin();
-        loginSteps.verifyUserNotLoggedIn();
+        loginSteps.verifyErrorforlogingInwithAnInvalidEmail();
 
+    }
+
+    @Test
+    public void emptyUsernamefieldLoginTest() {
+
+        loginSteps.navigateToLoginPage();
+        loginSteps.setLoginEmail("");
+        loginSteps.setLoginPassword("njfsdjkdgk");
+        loginSteps.clickLogin();
+        loginSteps.verifyMandatoryFieldserrorwhilelogginginwithInvalidUsername();
+    }
+    @Test
+    public void emptyPasswordfieldLoginTest() {
+
+        loginSteps.navigateToLoginPage();
+        loginSteps.setLoginEmail(Constants.userEmail);
+        loginSteps.setLoginPassword("");
+        loginSteps.clickLogin();
+        loginSteps.verifyMandatoryFieldserrorwhilelogginginwithInvalidPassword();
     }
 
     @Test
     public void emptyfieldsLoginTest() {
 
         loginSteps.navigateToLoginPage();
-        loginSteps.setUserEmail(" ");
-        loginSteps.setPassword(" ");
         loginSteps.clickLogin();
-        loginSteps.verifyMandatoryFieldserrorwhilelogginginwithInvalidCredentials();
-
+        loginSteps.verifyMandatoryFieldserrorwhilelogginginwithoutcredentials();
     }
 }

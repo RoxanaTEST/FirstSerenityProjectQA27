@@ -6,38 +6,4 @@ import net.serenitybdd.core.pages.WebElementFacade;
 
 public class LoginPage extends BasePage {
 
-    @FindBy(id = "email")
-    private WebElementFacade emailField;
-
-    @FindBy(id = "pass")
-    private WebElementFacade passwordField;
-
-    @FindBy(id = "send2")
-    private WebElementFacade loginButton;
-
-    @FindBy(css = ".error-msg span")
-    private WebElementFacade errorMessageElement;
-
-    @FindBy(css = ".validation-advice")
-    private WebElementFacade mandatoryfieldserrortext;
-
-    public void setEmailField(String value) {
-        typeInto(emailField, value);
-    }
-
-    public void setPasswordField(String value) {
-        typeInto(passwordField, value);
-    }
-
-    public void clickLoginButton() {
-        clickOn(loginButton);
-    }
-
-    public String getErrorMessage() {
-        return errorMessageElement.getText();
-    }
-
-    public String getMandatoryFieldsErrorMessage() {
-        return mandatoryfieldserrortext.getText();
-    }
 }

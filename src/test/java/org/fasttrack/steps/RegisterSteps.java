@@ -12,60 +12,48 @@ public class RegisterSteps extends BaseSteps {
     @Step
     public void navigateToRegisterPage() {
         homePage.clickAccountLink();
-        homePage.clickRegisterLink();
+
     }
 
-    @Step
-    public void setRegisterFirstname(String registerFirstname) {
-        registerPage.setRegisterfirstname(registerFirstname);
-    }
-
-    @Step
-    public void setRegisterMiddlename(String registerMiddlename) {
-        registerPage.setRegisterMiddlename(registerMiddlename);
-    }
-
-    @Step
-    public void setRegisterLastname(String registerLastname) {
-        registerPage.setRegisterLastname(registerLastname);
-    }
 
     @Step
     public void setRegisterEmail(String registerEmail) {
-        registerPage.setRegisterEmailAddress(registerEmail);
+        homeAccountPage.setRegisterEmailField(registerEmail);
     }
 
     @Step
     public void setRegisterPassword(String registerPassword) {
-        registerPage.setRegisterPassword(registerPassword);
-    }
-
-    @Step
-    public void setRegisterConfirmationPassword(String registerConfirmationPassword) {
-        registerPage.setRegisterPasswordReconfirm(registerConfirmationPassword);
+        homeAccountPage.setRegisterPasswordField(registerPassword);
     }
 
     @Step
     public void clickRegister() {
-        registerPage.clickRegisterButton();
-    }
-
-    @Step
-    public void verifyRegistrationSuccessfullywelcomeMsg() {
-        Assert.assertEquals("Thank you for registering with Madison Island.", registerPage.getSuccessfullyRegisteredmessage());
-    }
-
-    @Step
-    public void verifyRegistrationSuccessfullywelcomeMsgNotDisplayed() {
-        Assert.assertNotEquals("Thank you for registering with Madison Island.", registerPage.getSuccessfullyRegisteredmessage());
+        homeAccountPage.clickRegisterLink();
     }
 
     public void verifyAlreadyRegisterederrorMsg() {
-        Assert.assertEquals("There is already an account with this email address. If you are sure that it is your email address, click here to get your password and access your account.", registerPage.getAlreadyregisterederror());
-
+        Assert.assertEquals("Error: An account is already registered with your email address. Please log in.", homeAccountPage.getAlreadyregisterederror());
+    }
+    @Step
+    public void verifyRegistrationSuccessfullywelcomeMsg(String username) {
+        Assert.assertEquals(("Hello " + username + " (not " + username + "? Log out)"), myAccountPage.getWelcomeText());
+    }
+    @Step
+    public void verifyRegistrationSuccessfullywelcomeMsgNOTDISPALYED(String username) {
+        Assert.assertNotEquals(("Hello " + username + " (not " + username + "? Log out)"), myAccountPage.getWelcomeText());
+    }
+    @Step
+    public void verifyInvalidemailderrorMsg() {
+        Assert.assertEquals("Error: Please provide a valid email address.", homeAccountPage.getInvalidEmailregisterError());
+    }
+    @Step
+    public void verifyInvalidFormatEmailerrorMsg(String usernamemail) {
+        Assert.assertEquals(" Please include an '@'in the email address."+ usernamemail + " is missing an '@'.", homeAccountPage.getInvalidFormatEmailregistererror());
+    }
+    @Step
+    public void verifyRegisterTextDisplayedwhenRegisteringwithaninvalidFormailemail() {
+        Assert.assertEquals("Register",homeAccountPage.displayRegistertext());
     }
 
-    public void verifyRegisterNotmatchingpasswordsError() {
-        Assert.assertTrue(registerPage.getPasswordnotMatchingError());
-    }
 }
+

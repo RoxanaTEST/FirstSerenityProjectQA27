@@ -1,5 +1,6 @@
 package org.fasttrack.features;
 
+import io.cucumber.java.ja.前提;
 import org.fasttrack.utils.Constants;
 import org.junit.Test;
 
@@ -8,42 +9,106 @@ public class CartTest extends BaseTest {
     @Test
     public void loginAndAddToCartTest() {
         loginSteps.doLogin(Constants.userEmail, Constants.userPass);
-        searchSteps.navigateToProductName("SILVER DESERT NECKLACE");
+        searchSteps.navigateToProductName("hoodie with zipper");
+        cartSteps.setCartProductQty("1");
         cartSteps.addProductToCart();
-        cartSteps.getSuccesMsgProductaddedtoCart("Silver desert necklace ");
+        cartSteps.viewCartTextDisplayedafterAddingaproductintheCart();
 
     }
 
     @Test
-    public void checkTotalAndSubtotalTest() {
-        searchSteps.navigateToProductName("SILVER DESERT NECKLACE");
+    public void AddProductToCartNOloginTest() {
+        searchSteps.navigateToProductName("hoodie with zipper");
+        cartSteps.setCartProductQty("2");
         cartSteps.addProductToCart();
-        cartSteps.getSuccesMsgProductaddedtoCart("SILVER DESERT NECKLACE");
+        cartSteps.viewCartTextDisplayedafterAddingaproductintheCart();
 
-        searchSteps.navigateToProductName("SILVER DESERT NECKLACE");
-        cartSteps.addProductToCart();
-        cartSteps.getSuccesMsgProductaddedtoCart("SILVER DESERT NECKLACE");
-
-        cartSteps.checkSubtotalPrice();
-        cartSteps.checkTotalPrice();
     }
 
-    @Test //ex3
-    public void checkTotalpriceTest() {
-        searchSteps.navigateToProductName("SILVER DESERT NECKLACE");
+    @Test
+    public void accessYourCartTest() {
+        searchSteps.navigateToProductName("hoodie with zipper");
+        cartSteps.setCartProductQty("2");
         cartSteps.addProductToCart();
-        cartSteps.getSuccesMsgProductaddedtoCart("SILVER DESERT NECKLACE");
+        cartSteps.viewCart();
+        cartSteps.viewCartsCheckoutButtonafterAccessingyourCart();
+    }
 
-        searchSteps.navigateToProductName("SWING TIME EARRINGS");
+    @Test
+    public void updateProductsQtyinyourCartTest() {
+        searchSteps.navigateToProductName("hoodie with zipper");
+        cartSteps.setCartProductQty("2");
         cartSteps.addProductToCart();
-        cartSteps.getSuccesMsgProductaddedtoCart("SWING TIME EARRINGS");
+        cartSteps.viewCart();
+        cartSteps.setandUpdateCartsQuantity("1");
+        cartSteps.verifyCartUpdatedSuccessfullyMessage();
 
-        searchSteps.navigateToProductName("ISLA CROSSBODY HANDBAG");
+    }
+
+    @Test
+    public void useDiscountCouponTest() {
+        searchSteps.navigateToProductName("hoodie with zipper");
+        cartSteps.setCartProductQty("1");
         cartSteps.addProductToCart();
-        cartSteps.getSuccesMsgProductaddedtoCart("ISLA CROSSBODY HANDBAG");
+        cartSteps.viewCart();
+        cartSteps.setandUpdateCartsQuantity("1");
+        cartSteps.applyDiscountCoupon("50%OFF");
+        cartSteps.verifyDiscountAppliedSuccessfullyMessageDisplayed();
+
+    }
+
+    @Test
+    public void loginandUseDiscountCouponFortheSecondTimeTest() {
+        loginSteps.doLogin(Constants.userEmail,Constants.userPass);
+        searchSteps.navigateToProductName("hoodie with zipper");
+        cartSteps.setCartProductQty("1");
+        cartSteps.addProductToCart();
+        cartSteps.viewCart();
+        cartSteps.setandUpdateCartsQuantity("1");
+        cartSteps.applyDiscountCoupon("50%OFF");
+        cartSteps.verifyDiscountNotAppliedErrorMessageDisplayed();
+    }
+
+    @Test
+    public void removeProductsfromCartTest() {
+        searchSteps.navigateToProductName("hoodie with zipper");
+        cartSteps.setCartProductQty("3");
+        cartSteps.addProductToCart();
+        cartSteps.viewCart();
+        cartSteps.emptyCart();
+        cartSteps.verifyCartEmptiedMessageDisplayed();
 
 
-         cartSteps.checkIfTotalPriceiscorrect();
+    }
+    @Test
+    public void loginandRemoveProductfromCartTest() {
+        loginSteps.doLogin(Constants.userEmail,Constants.userPass);
+        searchSteps.navigateToProductName("hoodie with zipper");
+        cartSteps.setCartProductQty("1");
+        cartSteps.addProductToCart();
+        cartSteps.viewCart();
+        cartSteps.emptyCart();
+        cartSteps.verifyCartEmptiedMessageDisplayed();
+
+    }
+    @Test
+    public void checkifTotalpriceEqualstheSubtotalandtheFeeTest() {
+        searchSteps.navigateToProductName("hoodie with zipper");
+        cartSteps.setCartProductQty("1");
+        cartSteps.addProductToCart();
+
+        searchSteps.navigateToProductName("beanie");
+        cartSteps.setCartProductQty("2");
+        cartSteps.addProductToCart();
+
+        cartSteps.viewCartDashIcon();
+        cartSteps.checkSubtotalPrice();
+        cartSteps.checkTotalPrice();
+
+
+
+
+
 
     }
 }

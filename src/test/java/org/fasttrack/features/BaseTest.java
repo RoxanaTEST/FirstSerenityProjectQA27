@@ -24,12 +24,15 @@ public class BaseTest {
     protected CheckoutSteps checkoutSteps;
     @Steps
     protected RegisterSteps registerSteps;
+    @Steps
+    protected HomeSteps homeSteps;
+
 
 
     @Before
     public void init(){
         driver.manage().window().maximize();
-        driver.get("http://testfasttrackit.info/selenium-test");
+        driver.get("http://qa2.fasttrackit.org:8008/");
     }
 
     public void wait(int seconds) {
