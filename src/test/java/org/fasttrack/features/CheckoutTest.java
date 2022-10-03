@@ -42,7 +42,7 @@ public class CheckoutTest extends BaseTest {
         checkoutSteps.clickplaceOrder();
         checkoutSteps.verifyOrderPlacedSuccessfullyMsg();
 
-        wait(4);
+
 
     }
     @Test
@@ -53,10 +53,10 @@ public class CheckoutTest extends BaseTest {
         cartSteps.viewCartDashIcon();
         cartSteps.clickCheckoutButton();
 
-        checkoutSteps.fillInBillingInformation("ANA","POP","20 Libertatii","24","Cluj-Napoca","400678","0878999000","anapop28@yahoo.com");
+        checkoutSteps.fillInBillingInformation("ANA","POP","20 Libertatii","24","Cluj-Napoca","400678","0878999000","anapop29@yahoo.com");
 
         checkoutSteps.selectCreateAccount();
-        checkoutSteps.createAccountPassword("anamaria28");
+        checkoutSteps.createAccountPassword("anamaria29!");
 
         checkoutSteps.clickplaceOrder();
         checkoutSteps.verifyOrderPlacedSuccessfullyMsg();

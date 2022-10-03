@@ -27,7 +27,6 @@ public class SearchSteps extends BaseSteps {
 
     @Step
     public void navigateToProductName(String productName){
-        clickOnSearchIcon();
         searchForKeyword(productName);
         findProductWithNameInListAndOpen(productName);
     }

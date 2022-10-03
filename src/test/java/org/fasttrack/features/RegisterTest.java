@@ -19,21 +19,22 @@ public class RegisterTest extends BaseTest {
     @Test
     public void registerwithValidCredentialsTest() {
         registerSteps.navigateToRegisterPage();
-        registerSteps.setRegisterEmail("roxanatestare5@gmail.com");
+        registerSteps.setRegisterEmail("roxanatestare6@gmail.com");
         registerSteps.setRegisterPassword("Testareplatforma1!");
         registerSteps.clickRegister();
-        registerSteps.verifyRegistrationSuccessfullywelcomeMsg("roxanatestare5");
+        registerSteps.verifyRegistrationSuccessfullywelcomeMsg("roxanatestare6");
 
     }
 
     @Test
     public void registerwithInValidCredentialsTest() {
         registerSteps.navigateToRegisterPage();
-        registerSteps.setRegisterEmail("bdsjdkjjsdjdjd@asta.com");
+        registerSteps.setRegisterEmail("abasa@asta.com");
         registerSteps.setRegisterPassword("kjdjakdkj!");
         registerSteps.clickRegister();
-        registerSteps.verifyRegistrationSuccessfullywelcomeMsgNOTDISPALYED("bdsjdkjjsdjdjd");
-        //   registerSteps.verifyRegistrationSuccessfullywelcomeMsg("bdsjdkjdd");
+      //  registerSteps.verifyRegistrationSuccessfullywelcomeMsgNOTDISPALYED("bdsjdkjjsdjdjd");
+        registerSteps.verifyRegistrationSuccessfullywelcomeMsg("abasa");
+        //new e-mail
     }
 
     @Test

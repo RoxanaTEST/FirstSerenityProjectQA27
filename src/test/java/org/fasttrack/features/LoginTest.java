@@ -20,7 +20,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void loginwithInvalidcredentialsTest() {
         loginSteps.navigateToLoginPage();
-        loginSteps.setLoginEmail("hjsfdj@gmail.com");
+        loginSteps.setLoginEmail("hjsfdjh@gmail.com");
         loginSteps.setLoginPassword("000000000000000000000000000000000000000000000000");
         loginSteps.clickLogin();
         loginSteps.verifyErrorforlogingInwithAnInvalidEmail();

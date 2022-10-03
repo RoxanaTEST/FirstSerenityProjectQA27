@@ -106,6 +106,7 @@ public class HomePage extends BasePage {
    }
 
     public void setSearchField(String value){
+        clickOn(searchField);
         typeInto(searchField,value);
         searchicon2.click();
     }
