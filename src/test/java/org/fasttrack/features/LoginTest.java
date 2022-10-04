@@ -20,8 +20,8 @@ public class LoginTest extends BaseTest {
     @Test
     public void loginwithInvalidcredentialsTest() {
         loginSteps.navigateToLoginPage();
-        loginSteps.setLoginEmail("hjsfdjh@gmail.com");
-        loginSteps.setLoginPassword("000000000000000000000000000000000000000000000000");
+        loginSteps.setLoginEmail("hjsfkjdjjh@gmail.com");
+        loginSteps.setLoginPassword("0000000000000h00000000000000000000000000000000000");
         loginSteps.clickLogin();
         loginSteps.verifyErrorforlogingInwithAnInvalidEmail();
 
@@ -32,7 +32,7 @@ public class LoginTest extends BaseTest {
     public void loginWithInvalidPasswordTest() {
         loginSteps.navigateToLoginPage();
         loginSteps.setLoginEmail(Constants.userEmail);
-        loginSteps.setLoginPassword("12345as");
+        loginSteps.setLoginPassword("12345as8jg");
         loginSteps.clickLogin();
         loginSteps.verifyErrorforlogingInwithAnInvalidpassword(Constants.userEmail);
 
@@ -42,7 +42,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void invalidEmailLoginTest() {
         loginSteps.navigateToLoginPage();
-        loginSteps.setLoginEmail("jhjj@h3.com");
+        loginSteps.setLoginEmail("jhjjjjjjjh3j.com");
         loginSteps.setLoginPassword("HFHFJJFKF22");
         loginSteps.clickLogin();
         loginSteps.verifyErrorforlogingInwithAnInvalidEmail();
@@ -54,7 +54,7 @@ public class LoginTest extends BaseTest {
 
         loginSteps.navigateToLoginPage();
         loginSteps.setLoginEmail("");
-        loginSteps.setLoginPassword("njfsdjkdgk");
+        loginSteps.setLoginPassword("njfsdjkkdg8k");
         loginSteps.clickLogin();
         loginSteps.verifyMandatoryFieldserrorwhilelogginginwithInvalidUsername();
     }

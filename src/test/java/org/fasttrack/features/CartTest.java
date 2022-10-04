@@ -9,7 +9,7 @@ public class CartTest extends BaseTest {
     @Test
     public void loginAndAddToCartTest() {
         loginSteps.doLogin(Constants.userEmail, Constants.userPass);
-        searchSteps.navigateToProductName("hoodie with zipper");
+        searchSteps.navigateToProductName1("hoodie with zipper");
         cartSteps.setCartProductQty("1");
         cartSteps.addProductToCart();
         cartSteps.viewCartTextDisplayedafterAddingaproductintheCart();
@@ -18,7 +18,7 @@ public class CartTest extends BaseTest {
 
     @Test
     public void AddProductToCartNOloginTest() {
-        searchSteps.navigateToProductName("hoodie with zipper");
+        searchSteps.navigateToProductName1("hoodie with zipper");
         cartSteps.setCartProductQty("2");
         cartSteps.addProductToCart();
         cartSteps.viewCartTextDisplayedafterAddingaproductintheCart();
@@ -27,7 +27,7 @@ public class CartTest extends BaseTest {
 
     @Test
     public void accessYourCartTest() {
-        searchSteps.navigateToProductName("hoodie with zipper");
+        searchSteps.navigateToProductName1("hoodie with zipper");
         cartSteps.setCartProductQty("2");
         cartSteps.addProductToCart();
         cartSteps.viewCart();
@@ -36,7 +36,7 @@ public class CartTest extends BaseTest {
 
     @Test
     public void updateProductsQtyinyourCartTest() {
-        searchSteps.navigateToProductName("hoodie with zipper");
+        searchSteps.navigateToProductName1("hoodie with zipper");
         cartSteps.setCartProductQty("2");
         cartSteps.addProductToCart();
         cartSteps.viewCart();
@@ -47,7 +47,7 @@ public class CartTest extends BaseTest {
 
     @Test
     public void useDiscountCouponTest() {
-        searchSteps.navigateToProductName("hoodie with zipper");
+        searchSteps.navigateToProductName1("hoodie with zipper");
         cartSteps.setCartProductQty("1");
         cartSteps.addProductToCart();
         cartSteps.viewCart();
@@ -60,7 +60,7 @@ public class CartTest extends BaseTest {
     @Test
     public void loginandUseDiscountCouponFortheSecondTimeTest() {
         loginSteps.doLogin(Constants.userEmail,Constants.userPass);
-        searchSteps.navigateToProductName("hoodie with zipper");
+        searchSteps.navigateToProductName1("hoodie with zipper");
         cartSteps.setCartProductQty("1");
         cartSteps.addProductToCart();
         cartSteps.viewCart();
@@ -71,7 +71,7 @@ public class CartTest extends BaseTest {
 
     @Test
     public void removeProductsfromCartTest() {
-        searchSteps.navigateToProductName("hoodie with zipper");
+        searchSteps.navigateToProductName1("hoodie with zipper");
         cartSteps.setCartProductQty("3");
         cartSteps.addProductToCart();
         cartSteps.viewCart();
@@ -83,7 +83,7 @@ public class CartTest extends BaseTest {
     @Test
     public void loginandRemoveProductfromCartTest() {
         loginSteps.doLogin(Constants.userEmail,Constants.userPass);
-        searchSteps.navigateToProductName("hoodie with zipper");
+        searchSteps.navigateToProductName1("hoodie with zipper");
         cartSteps.setCartProductQty("1");
         cartSteps.addProductToCart();
         cartSteps.viewCart();
@@ -93,11 +93,11 @@ public class CartTest extends BaseTest {
     }
     @Test
     public void checkifTotalpriceEqualstheSubtotalandtheFeeTest() {
-        searchSteps.navigateToProductName("hoodie with zipper");
+        searchSteps.navigateToProductName1("hoodie with zipper");
         cartSteps.setCartProductQty("1");
         cartSteps.addProductToCart();
 
-        searchSteps.navigateToProductName("beanie");
+        searchSteps.navigateToProductName1("beanie");
         cartSteps.setCartProductQty("2");
         cartSteps.addProductToCart();
 

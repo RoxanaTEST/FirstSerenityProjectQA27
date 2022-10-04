@@ -38,7 +38,7 @@ public class LoginSteps extends BaseSteps {
 
     @Step
     public void verifyErrorforlogingInwithAnInvalidEmail() {
-        Assert.assertEquals("ERROR: Invalid email address. Lost your password?", homeAccountPage.getInvalidEmailLoginError());
+        Assert.assertEquals("ERROR: Invalid username. Lost your password?", homeAccountPage.getInvalidEmailLoginError());
     }
 
     @Step

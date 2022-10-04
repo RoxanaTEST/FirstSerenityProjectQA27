@@ -14,9 +14,13 @@ public class SearchSteps extends BaseSteps {
     public void clickOnSearchIcon() {
         homePage.clickSearchButton();
     }
-
+    @Step
+    public void clickOnSearchField() {
+        homePage.clickSearchField();
+    }
     @Step
     public void searchForKeyword(String keyword) {
+        clickOnSearchField();
         homePage.setSearchField(keyword);
 
     }
@@ -27,6 +31,13 @@ public class SearchSteps extends BaseSteps {
 
     @Step
     public void navigateToProductName(String productName){
+        searchForKeyword(productName);
+        findProductWithNameInListAndOpen(productName);
+    }
+
+    @Step
+    public void navigateToProductName1(String productName){
+        clickOnSearchIcon();
         searchForKeyword(productName);
         findProductWithNameInListAndOpen(productName);
     }

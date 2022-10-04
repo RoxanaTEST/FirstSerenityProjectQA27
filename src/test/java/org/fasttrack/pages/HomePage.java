@@ -104,9 +104,11 @@ public class HomePage extends BasePage {
    public void clickSearchButton(){
        clickOn(searchIcon);
    }
+    public void clickSearchField(){
+        clickOn(searchField);
+    }
 
     public void setSearchField(String value){
-        clickOn(searchField);
         typeInto(searchField,value);
         searchicon2.click();
     }
